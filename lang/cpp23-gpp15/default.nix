@@ -1,7 +1,7 @@
 {pkgs}:
 pkgs.stdenv.mkDerivation {
   pname = "cpp23-gpp15";
-  version = "15.1.0";
+  version = "1.0";
   src = ./.;
   buildInputs = with pkgs; [
     gcc15

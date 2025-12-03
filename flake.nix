@@ -2,8 +2,8 @@
   description = "traO Judge language environment";
 
   inputs = {
-    # nixpkgs 25.05
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    # nixpkgs 25.11
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
 
     # flake-parts
     flake-parts.url = "github:hercules-ci/flake-parts";
