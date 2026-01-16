@@ -12,5 +12,5 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v6.0.1
-      - uses: DeterminateSystems/determinate-nix-action@maine
+      - uses: DeterminateSystems/determinate-nix-action@main
       - run: nix flake check --all-systems
