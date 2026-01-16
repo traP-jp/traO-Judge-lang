@@ -12,13 +12,17 @@
   outputs = inputs @ {flake-parts, ...}: let
     traoLib = import ./lib;
   in
-    flake-parts.lib.mkFlake {inherit inputs;} {
+    flake-parts.lib.mkFlake {inherit inputs;} rec {
       imports = [
-        traoLib.flakeModule
-        ./lang
+        flake.flakeModules.default
       ];
       systems = ["x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin"];
-
+      flake.flakeModules.default = {
+        imports = [
+          traoLib.flakeModule
+          ./lang
+        ];
+      };
       perSystem = {pkgs, ...}: {
         formatter = pkgs.alejandra;
       };
