@@ -1,10 +1,4 @@
-{
-  flake-parts-lib,
-  config,
-  ...
-}: let
-  cfg = config.trao;
-in {
+{flake-parts-lib, ...}: {
   options.perSystem = flake-parts-lib.mkPerSystemOption ({lib, ...}:
     with lib; {
       options.trao = {
