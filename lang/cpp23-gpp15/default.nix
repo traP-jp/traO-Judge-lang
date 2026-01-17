@@ -28,6 +28,7 @@
       };
     sampleSource = builtins.readFile ./main.cpp;
     displayName = "C++23 (g++ 15)";
+    extension = "cpp";
     checks = {
       main = {
         source = builtins.readFile ./main.cpp;

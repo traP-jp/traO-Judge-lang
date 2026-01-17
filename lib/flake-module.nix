@@ -18,6 +18,10 @@
                   type = types.str;
                   description = "A human-readable name for the language.";
                 };
+                extension = mkOption {
+                  type = types.str;
+                  description = "The file extension for source files in this language.";
+                };
                 checks = mkOption {
                   type = types.lazyAttrsOf (types.submodule ({...}: {
                     options = {
