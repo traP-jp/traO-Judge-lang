@@ -9,18 +9,21 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
-  outputs = inputs @ {flake-parts, ...}:
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      imports = [];
+  outputs = inputs @ {flake-parts, ...}: let
+    traoLib = import ./lib;
+  in
+    flake-parts.lib.mkFlake {inherit inputs;} rec {
+      imports = [
+        flake.flakeModules.default
+      ];
       systems = ["x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin"];
-
+      flake.flakeModules.default = {
+        imports = [
+          traoLib.flakeModule
+          ./lang
+        ];
+      };
       perSystem = {pkgs, ...}: {
-        packages = let
-          cpp23-gpp15 = import ./lang/cpp23-gpp15 {inherit pkgs;};
-        in {
-          cpp23-gpp15 = cpp23-gpp15;
-        };
-
         formatter = pkgs.alejandra;
       };
     };
